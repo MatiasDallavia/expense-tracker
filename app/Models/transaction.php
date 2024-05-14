@@ -19,16 +19,21 @@ class transaction extends Model
 
     public static function get_total()
     {
-        $transactions = self::where("user_id", 1);
+        $transactions = self::all();
         $total = 0;
-        Log::info("HOLA");
 
         foreach ($transactions as &$transaction) {
-            dump($transaction->amount);
-            Log::info("HOLA");
             $total = $total + $transaction->amount;
         }
 
         return $total;
+    }
+
+    public static function last_transaction()
+    {
+        $last_transaction = self::latest()->get()->first();
+        dump($last_transaction);
+
+        return $last_transaction->amount;
     }
 }
