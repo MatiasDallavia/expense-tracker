@@ -15,8 +15,6 @@
   </head>
 
   <body>
-    <h1>Expense Tracker</h1>
-
     <main>
 
         @include("balance-header")
@@ -73,6 +71,20 @@
     </main>
 
     <!-- <script src="script.js"></script> -->
+    <script>
+        const switchLabel = document.querySelector('.switch-label');
+        const switchInput = document.getElementById('switch');
+
+        switchInput.addEventListener('change', function() {
+          if (this.checked) {
+            switchLabel.innerText = 'INCOME';
+          } else {
+            switchLabel.innerText = 'EXPENSE';
+          }
+        });
+  </script>
+  
+
     <script>
       document
         .getElementById("download-excel-button")
