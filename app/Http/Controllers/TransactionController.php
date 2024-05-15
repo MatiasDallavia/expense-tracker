@@ -54,6 +54,8 @@ class TransactionController extends Controller
             $amount = -$amount;
         }
 
+        transaction::check_alarms($amount, 1);
+
         $transaction = new Transaction();
         $transaction->amount = $amount;
         $transaction->category = request()->get("date", now());
