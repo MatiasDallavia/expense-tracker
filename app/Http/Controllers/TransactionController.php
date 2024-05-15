@@ -68,4 +68,13 @@ class TransactionController extends Controller
 
         return redirect("/");
     }
+
+    public function destroy($id)
+    {
+
+        // $idea = Transaction::where("id", $id)->firstOrFail();
+        // $idea->delete();
+
+        return redirect("/");
+    }
 }

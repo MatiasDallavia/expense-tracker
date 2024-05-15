@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [TransactionController::class, "index"]);
 
-Route::post('/transactions', [TransactionController::class, "store"])->name("transaction.store");
+Route::post('/transactions', [TransactionController::class, "store"])->name("transactions.store");
+
+Route::delete('/transactions/{id}', [TransactionController::class, "destroy"])->name("transaction.destroy");
 
 // Route::get('/', function () {
 //     return view('index');
