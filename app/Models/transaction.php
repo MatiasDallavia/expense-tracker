@@ -13,6 +13,7 @@ class transaction extends Model
 
     protected $fillable = [
         'amount',
+        'date',
         'created_at',
         'user',
     ];
