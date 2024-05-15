@@ -33,7 +33,6 @@ class transaction extends Model
     public static function last_transaction()
     {
         $last_transaction = self::latest()->get()->first();
-        dump($last_transaction);
 
         return $last_transaction->amount;
     }
