@@ -24,6 +24,11 @@ h1 {
   font-size: 1.5rem;
 }
 
+h1.title{
+  color: #1d1f27;
+  font-size: 40px;
+}
+
 h3,
 header,
 ul {
@@ -124,47 +129,77 @@ form div:nth-child(n + 3) {
   flex-basis: calc(50% - 5px);
 }
 
-input#type {
-  appearance: none;
-  position: absolute;
-}
 
-.option {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  background: #eee;
-  border-radius: 5px;
+
+.switch {
   position: relative;
+  display: flex;
+  width: 100px; /* Ancho aumentado para acomodar las etiquetas */
+  height: 34px;
 }
 
-.option span {
-  width: 50%;
-  text-align: center;
-  cursor: pointer;
-  z-index: 2;
+.switch-container .switch-label{
+  margin: 10px;
 }
 
-.option::before {
-  content: "";
+.label-left,
+.label-right {
   position: absolute;
-  top: 5px;
-  left: 0;
-  background-color: #5af282;
-  height: calc(100% - 10px);
-  width: calc(50% - 10px);
-  transform: translateX(5px);
-  border-radius: inherit;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-  transition: all 200ms;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #555;
 }
 
+.label-left {
+  left: 10px; /* Posición de la etiqueta "Expense" */
+}
 
+.label-right {
+  right: 10px; /* Posición de la etiqueta "Income" */
+}
 
-input#type:checked ~ .option::before {
-  left: 50%;
-  background-color: #f53d2c;
+.checkbox {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 40px;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f03026; /* Color rojo por defecto */
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #62e831; /* Cambio a verde cuando está activado (ON) */
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(66px); /* Aumentado para acomodar las etiquetas */
+  -ms-transform: translateX(66px);
+  transform: translateX(66px);
 }
 
 
