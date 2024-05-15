@@ -66,9 +66,6 @@ class TransactionController extends Controller
         // dd($transactions);
         // dd($transactions);
 
-        return view('index', [
-            "transactions" => transaction::all(),
-            "total" => transaction::get_total(),
-            "last_transaction" => transaction::last_transaction()
-        ]);    }
+        return redirect("/");
+    }
 }
