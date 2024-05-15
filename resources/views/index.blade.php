@@ -147,6 +147,23 @@
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    <script>
+          const belowCheckbox = document.getElementById('below-threshold');
+          const aboveCheckbox = document.getElementById('above-threshold');
+
+          belowCheckbox.addEventListener('change', function() {
+              if (this.checked) {
+                  aboveCheckbox.checked = false;
+              }
+          });
+
+          aboveCheckbox.addEventListener('change', function() {
+              if (this.checked) {
+                  belowCheckbox.checked = false;
+              }
+          });
+    </script>
 
     <script>
       $(document).ready(function () {

@@ -2,17 +2,18 @@
     <div class="popup" id="popup">
       <h2>Add Alarm</h2>
 
-      <form id="newAlarmForm">
+      <form  method="POST" action="{{ route('alarm.store') }}"id="newAlarmForm">
+        @csrf
         <br />
         <div class="alarm-options">
           <label class="alarm-container"
             >Below Treshold
-            <input type="radio" checked="checked" name="alarm-radio" />
+            <input type="radio" checked="checked" name="below-treshold" id="below-threshold"/>
             <span class="alarm-checkmark"></span>
           </label>
           <label class="alarm-container"
             >Above Treshold
-            <input type="radio" name="alarm-radio" />
+            <input type="radio" name="above-treshold" id="above-threshold"/>
             <span class="alarm-checkmark"></span>
           </label>
 
@@ -23,7 +24,6 @@
               type="number"
               name="treshold-amount"
               value="0"
-              min="0.5"
               step="1"
               required
             />
