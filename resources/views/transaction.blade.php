@@ -1,4 +1,4 @@
-<li class="transaction">
+<li id="{{$transaction->id}}" class="transactionCard">
     <div class="name">
       <h4>{{$transaction->category}}</h4>
       <p>{{$transaction->date}}</p>
@@ -21,6 +21,7 @@
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          class="deleteButton"
         >
           <circle cx="12" cy="12" r="10" stroke-width="1" />
           <path
@@ -38,6 +39,7 @@
           stroke="currentColor"
           width="24"
           height="24"
+          class="deleteTransactionButton"
         >
           <circle cx="12" cy="12" r="10" stroke-width="1" />
           <path

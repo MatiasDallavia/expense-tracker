@@ -3,7 +3,7 @@
 <div class="forms-container">
     <h3>Add Transaction</h3>
 
-    <form method="POST" action="{{ route('transaction.store') }}">
+    <form method="POST" action="{{ route('transactions.store') }}">
       @csrf
         <div class="switch-container">
             <div class="switch-label">EXPENSE</div>

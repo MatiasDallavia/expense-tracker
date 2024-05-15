@@ -83,6 +83,22 @@
           }
         });
   </script>
+
+  <script>
+    const transactions = document.querySelectorAll(".transactionCard").forEach(transaction => {
+      const id = transaction.getAttribute("id");
+      const deleteButton = transaction.querySelector(".deleteTransactionButton").addEventListener("click", async () => {
+          console.log("APRETADO");
+          fetch(`http://127.0.0.1:8000/transactions/${id}`, {
+            method: "DELTE",
+          })
+              .then(response => window.location.href = "/23")  // convertir a json
+              .then(json => console.log(json))    //imprimir los datos en la consola
+              .catch(err => console.log('Solicitud fallida', err)); // Capturar errores         
+            });
+      console.log(deleteButton);
+    });
+  </script>
   
 
     <script>
