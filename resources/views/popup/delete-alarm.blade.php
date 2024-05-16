@@ -1,4 +1,4 @@
-<div class="deleteAlarmoverlay" id="deleteAlarmoverlay">
+<div class="overlay deleteAlarmoverlay" id="deleteAlarmoverlay">
     <div class="popup" id="popup">
       <h2>Remove Alarm</h2>
 
@@ -25,6 +25,6 @@
         </div>
         <br />
       </form>
-      <button id="closePopup">Cerrar</button>
+      <button class="closePopup closeDeleteAlarm">Cerrar</button>
     </div>
   </div>

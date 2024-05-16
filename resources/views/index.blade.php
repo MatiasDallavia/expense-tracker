@@ -24,6 +24,8 @@
 
             @include('add-transaction')
 
+            @include("popup.delete-programed-transaction")
+
             @include("program-transaction")
 
             {{-- @include('user.login') --}}
@@ -53,7 +55,18 @@
                 <a id="create-alarm-button" href="#">Create Alarm</a>
                 <a id="remove-alarm-button" href="#">Remove Alarm</a>
               </div>
+
             </div>
+
+            <div class="dropdown">
+              <img class="icon calendar dropbtn" src="images/calendar.svg" />
+
+              <div class="dropdown-content">
+                <a id="create-prog-transaction-button" href="#">Program Transaction</a>
+                <a id="remove-prog-transaction-button" href="#">Remove Transaction</a>
+              </div>    
+            </div>
+
           </div>
         </div>
 
@@ -146,11 +159,47 @@
           document.getElementById("deleteAlarmoverlay").style.display = "block";
         });
 
+
+        document
+        .getElementById("create-prog-transaction-button")
+        .addEventListener("click", function () {
+          console.log("PULSANDO");
+          document.querySelector(".newProgrammedTransaction").style.display = "block";
+        });
+
+      document
+        .getElementById("remove-prog-transaction-button")
+        .addEventListener("click", function () {
+          document.getElementById("deleteProgramTransactionoverlay").style.display = "block";
+        });
+
       document
         .getElementById("closePopup")
         .addEventListener("click", function () {
           document.getElementById("overlay").style.display = "none";
         });
+
+
+      document
+        .querySelector(".closePopup.closeDeleteAlarm")
+        .addEventListener("click", function () {
+          document.getElementById("deleteAlarmoverlay").style.display = "none";
+        });
+
+
+      document
+        .querySelector(".closePopup.ProgramTransaction")
+        .addEventListener("click", function () {
+          document.querySelector(".overlay.ProgramTransaction").style.display = "none";
+        });
+
+      document
+        .querySelector(".closePopup.newProgrammedTransaction")
+        .addEventListener("click", function () {
+          document.querySelector(".overlay.newProgrammedTransaction").style.display = "none";
+        });        
+
+
     </script>
     <script>
       $(document).ready(function () {

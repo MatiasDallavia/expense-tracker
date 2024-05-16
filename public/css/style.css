@@ -574,6 +574,20 @@ ul li:hover .action {
   font-size: 1rem;
 }
 
+.closePopup{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  height: 42px;
+  cursor:pointer;
+  background-color: #3a3dbe;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+
 #registerForm a {
   color: #2196F3;
   font-size: 1rem;
@@ -586,8 +600,13 @@ ul li:hover .action {
   margin: 10px;
 }
 
+.programmedTransaction{
+  display: none;
+}
+
 #programmedTransactionForm > * {
   margin: 10px 0;
+  
 }
 
 
@@ -634,4 +653,19 @@ ul li:hover .action {
 
 #datePikcer {
   width: 300px ; /* Ancho del input */
+}
+
+
+/* delete progr transactions */
+
+
+.deleteProgramTransactionoverlay{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo opacado y oscurecido */
+  z-index: 1000; /* Para asegurar que esté encima de todo */
 }
