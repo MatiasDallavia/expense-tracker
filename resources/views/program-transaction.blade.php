@@ -1,47 +1,39 @@
 <div class="programmedTransaction">
     <div class="popup" id="popup">
-      <h2>Program</h2>
+      <h2>Program a Transaction</h2>
 
-      <form id="programmedTransactionForm">
-        <div>
-          <label class="alarm-container"
-            >Below Treshold
-            <input type="radio" checked="checked" name="alarm-radio" />
-            <span class="alarm-checkmark"></span>
-          </label>
-
-          <br />
-
-          <label class="alarm-container"
-            >Above Treshold
-            <input type="radio" name="alarm-radio" />
-            <span class="alarm-checkmark"></span>
-          </label>
+      <form id="programmedTransactionForm" method="POST" action="{{ route('transactions.store') }}">
+        @csrf
+      
+        <div class="form-group">
+          <label for="datePikcer">Exact Date:</label>
+          <input type="date" id="datePikcer" name="fecha" min="2022-01-01" max="2024-12-31">
         </div>
-        <br />
-
-        <div>
+      
+        <div class="form-group flex-container">
+          <label for="aboveThreshold">Monthly:</label>
+          <input type="checkbox" id="aboveThreshold" name="Monthly" onclick="handleCheckboxChange(this)">
+          <label for="belowThreshold">Daily:</label>
+          <input type="checkbox" id="belowThreshold" name="Daily" onclick="handleCheckboxChange(this)">
+        </div>
+      
+        <div class="form-group flex-container">
           <label for="transaction-amount">Transaction Amount</label>
           <input
             id="transaction-amount"
             type="number"
             name="treshold-amount"
             value="0"
-            min="0.0"
-            step="0.1"
+            min="0"
+            step="1"
             required
           />
         </div>
-        <!-- 
-                    <div class="input-group date form-group" id="datepicker">
-                        <input type="text" class="form-control" id="Dates" name="Dates"
-                            placeholder="Select days" required />
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i><span
-                                class="count"></span></span>
-                    </div> -->
-
-        <button type="submit">Submit</button>
+      
+        <button style="cursor:pointer;" type="submit">Submit</button>
+      
       </form>
+      
       <button id="closePopup">Close</button>
     </div>
   </div>

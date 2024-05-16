@@ -24,6 +24,8 @@
 
             @include('add-transaction')
 
+            @include("program-transaction")
+
             {{-- @include('user.login') --}}
 
             {{-- @include('user.register') --}}
@@ -72,6 +74,8 @@
 
     <!-- <script src="script.js"></script> -->
     <script>
+
+
         const switchLabel = document.querySelector('.switch-label');
         const switchInput = document.getElementById('switch');
 
@@ -83,6 +87,28 @@
           }
         });
   </script>
+
+  <script>
+    document.getElementById('datePikcer').min = new Date().toISOString().split('T')[0];
+
+    function handleCheckboxChange(checkbox) {
+      // Obtener el input de fecha
+      const dateInput = document.getElementById('datePikcer');
+    
+      // Deshabilitar el input de fecha si se selecciona algún checkbox
+      dateInput.disabled = checkbox.checked;
+    
+      // Desmarcar el otro checkbox si este checkbox está marcado
+      if (checkbox.checked) {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(cb => {
+          if (cb !== checkbox) {
+            cb.checked = false;
+          }
+        });
+      }
+    }
+    </script>  
 
   <script>
     const transactions = document.querySelectorAll(".transactionCard").forEach(transaction => {
