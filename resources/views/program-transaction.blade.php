@@ -1,4 +1,4 @@
-<div class="programmedTransaction">
+<div class="overlay newProgrammedTransaction">
     <div class="popup" id="popup">
       <h2>Program a Transaction</h2>
 
@@ -34,6 +34,6 @@
       
       </form>
       
-      <button id="closePopup">Close</button>
+      <button class="closePopup newProgrammedTransaction">Close</button>
     </div>
   </div>
