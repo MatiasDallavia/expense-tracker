@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlarmController;
+use App\Http\Controllers\ScheduledTransactionController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,8 @@ Route::post('/transactions', [TransactionController::class, "store"])->name("tra
 Route::delete('/transactions/{id}', [TransactionController::class, "destroy"])->name("transaction.destroy");
 
 Route::post('/alarms', [AlarmController::class, "store"])->name("alarm.store");
+
+Route::post('/schedule', [ScheduledTransactionController::class, "store"])->name("schedule.store");
 
 // Route::get('/', function () {
 //     return view('index');
