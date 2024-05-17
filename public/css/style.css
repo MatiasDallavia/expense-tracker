@@ -129,12 +129,12 @@ form div:nth-child(n + 3) {
   flex-basis: calc(50% - 5px);
 }
 
-
+/**/
 
 .switch {
   position: relative;
-  display: flex;
-  width: 100px; /* Ancho aumentado para acomodar las etiquetas */
+  display: inline-block; /* Cambiado de flex a inline-block */
+  width: 130px; /* Ancho aumentado para acomodar las etiquetas */
   height: 34px;
 }
 
@@ -152,18 +152,18 @@ form div:nth-child(n + 3) {
 }
 
 .label-left {
-  left: 10px; /* Posición de la etiqueta "Expense" */
+  left: 10px; /* Posición de la etiqueta "Transactions" */
 }
 
 .label-right {
-  right: 10px; /* Posición de la etiqueta "Income" */
+  right: 10px; /* Posición de la etiqueta "Scheduled Transactions" */
 }
 
 .checkbox {
   opacity: 0;
   width: 0;
   height: 0;
-  margin: 40px;
+  margin: 0; /* Cambiado a 0 para evitar desplazamiento */
 }
 
 .slider {
@@ -192,15 +192,18 @@ form div:nth-child(n + 3) {
   border-radius: 50%;
 }
 
-input:checked + .slider {
+/* Cambiado el selector para que afecte solo a la etiqueta hermana directa */
+.switch .checkbox:checked + .slider {
   background-color: #62e831; /* Cambio a verde cuando está activado (ON) */
 }
 
-input:checked + .slider:before {
+/* Cambiado el selector para que afecte solo a la etiqueta hermana directa */
+.switch .checkbox:checked + .slider:before {
   -webkit-transform: translateX(66px); /* Aumentado para acomodar las etiquetas */
   -ms-transform: translateX(66px);
-  transform: translateX(66px);
+  transform: translateX(93px);
 }
+
 
 
 

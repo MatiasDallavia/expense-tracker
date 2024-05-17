@@ -2,19 +2,29 @@
     <div class="popup" id="popup">
       <h2>Program a Transaction</h2>
 
-      <form id="programmedTransactionForm" method="POST" action="{{ route('transactions.store') }}">
+      <form id="programmedTransactionForm" method="POST" action="{{ route('schedule.store') }}">
         @csrf
       
         <div class="form-group">
           <label for="datePikcer">Exact Date:</label>
-          <input type="date" id="datePikcer" name="fecha" min="2022-01-01" max="2024-12-31">
+          <input type="date" id="datePikcer" name="schedule-for" min="2022-01-01" max="2024-12-31">
         </div>
+
+        <div class="form-group flex-container">
+
+          <div class="switch-label program-transaction">INCOME</div>
+          <div class="switch">
+              <input type="checkbox" id="switchScheduledTransactions" class="checkbox" name="transaction-amount">
+              <label for="switchScheduledTransactions" class="slider"></label>
+          </div>      
+        </div>
+
       
         <div class="form-group flex-container">
           <label for="aboveThreshold">Monthly:</label>
-          <input type="checkbox" id="aboveThreshold" name="Monthly" onclick="handleCheckboxChange(this)">
+          <input type="checkbox" id="aboveThreshold" name="monthly" onclick="handleCheckboxChange(this)">
           <label for="belowThreshold">Daily:</label>
-          <input type="checkbox" id="belowThreshold" name="Daily" onclick="handleCheckboxChange(this)">
+          <input type="checkbox" id="belowThreshold" name="daily" onclick="handleCheckboxChange(this)">
         </div>
       
         <div class="form-group flex-container">
@@ -22,7 +32,7 @@
           <input
             id="transaction-amount"
             type="number"
-            name="treshold-amount"
+            name="amount"
             value="0"
             min="0"
             step="1"

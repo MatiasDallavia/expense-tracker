@@ -6,11 +6,13 @@
     <form method="POST" action="{{ route('transactions.store') }}">
       @csrf
         <div class="switch-container">
-            <div class="switch-label">EXPENSE</div>
-            <div class="switch">
-                <input type="checkbox" id="switch" class="checkbox" name="isIncome">
-                <label for="switch" class="slider"></label>
-            </div>
+            
+            <div class="switch-label add-transaction">EXPENSES</div>
+            <div class="switch add-transaction">
+                <input type="checkbox" id="switchTransactions" class="checkbox" name="transaction-amount">
+                <label for="switchTransactions" class="slider"></label>
+            </div>   
+
         </div>
 
         <div>

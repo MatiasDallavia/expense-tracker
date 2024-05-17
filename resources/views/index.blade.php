@@ -89,16 +89,38 @@
     <script>
 
 
-        const switchLabel = document.querySelector('.switch-label');
-        const switchInput = document.getElementById('switch');
+        const switchLabel = document.querySelector('.switch-label.add-transaction');
+        const switchInput = document.querySelector('#switchTransactions');
 
         switchInput.addEventListener('change', function() {
+          console.log(this.checked);
           if (this.checked) {
+            console.log("checked");
+
             switchLabel.innerText = 'INCOME';
           } else {
+            console.log("object");
             switchLabel.innerText = 'EXPENSE';
           }
         });
+
+        const switchLabel2 = document.querySelector('.switch-label.program-transaction');
+        const switchInput2 = document.querySelector('#switchScheduledTransactions');
+
+        switchInput2.addEventListener('change', function() {
+          console.log(this.checked);
+          if (this.checked) {
+            console.log("checked");
+
+            switchLabel2.innerText = 'INCOME';
+          } else {
+            console.log("object");
+            switchLabel2.innerText = 'EXPENSE';
+          }
+        });        
+
+
+
   </script>
 
   <script>
