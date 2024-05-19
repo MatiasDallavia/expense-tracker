@@ -1,23 +1,62 @@
-<div class="overlay ProgramTransaction" id="deleteProgramTransactionoverlay">
-    <div class="popup" id="popup">
-        <h2>Remove Alarm</h2>
+<div class="overlay ProgramTransaction" id="deleteScheduledTransactionOverlay">
+    <div class="popup" id="scheduledPopup">
+        <h2>Remove Scheduled Transaction</h2>
 
-        <form id="delete alarmsAlarmForm">
+        <form id="deleteScheduledTransactionForm">
             <br />
-            <div id="alarmTableContainer">
-                <table id="alarmTable">
+            <div id="scheduledTransactionTableContainer">
+                <table id="scheduledTransactionTable">
                     <tr>
                         <td colspan="2">
-                            <div class="alarm-name">
-                                Transaction
+                            <div class="scheduled-transactions-name">
+                                -1000
                             </div>
-                            <div class="alarm-description">
+                            <div class="scheduled-transactions-description">
                                 Created the 23
                             </div>
                         </td>
-                        <td><button class="deleteButton">x</button></td>
+                        <td><button class="deleteScheduledTransactionButton">x</button></td>
                     </tr>
-
+                    <!-- Agrega más filas según sea necesario -->
+                </table>
+            </div>
+            <br />
+        </form>
+        <form id="deleteScheduledTransactionForm">
+            <br />
+            <div id="scheduledTransactionTableContainer">
+                <table id="scheduledTransactionTable">
+                    <tr>
+                        <td colspan="2">
+                            <div class="scheduled-transactions-name">
+                                Scheduled Transaction
+                            </div>
+                            <div class="scheduled-transactions-description">
+                                Created the 23
+                            </div>
+                        </td>
+                        <td><button class="deleteScheduledTransactionButton">x</button></td>
+                    </tr>
+                    <!-- Agrega más filas según sea necesario -->
+                </table>
+            </div>
+            <br />
+        </form>
+        <form id="deleteScheduledTransactionForm">
+            <br />
+            <div id="scheduledTransactionTableContainer">
+                <table id="scheduledTransactionTable">
+                    <tr>
+                        <td colspan="2">
+                            <div class="scheduled-transactions-name">
+                                Scheduled Transaction
+                            </div>
+                            <div class="scheduled-transactions-description">
+                                Created the 23
+                            </div>
+                        </td>
+                        <td><button class="deleteScheduledTransactionButton">x</button></td>
+                    </tr>
                     <!-- Agrega más filas según sea necesario -->
                 </table>
             </div>

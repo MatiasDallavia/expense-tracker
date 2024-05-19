@@ -273,12 +273,12 @@ form div:nth-child(n + 3) {
 
 /* POPUP */
 
-.alarm-options {
+.scheduled-transactions-options {
   display: block; /* Presentación en bloque */
   width: 200px; /* Ancho fijo del contenedor */
 }
 
-.alarm-container {
+.scheduled-transactions-container {
   display: block;
   position: relative;
   margin-bottom: 12px; /* Espacio entre opciones */
@@ -287,15 +287,13 @@ form div:nth-child(n + 3) {
   padding-left: 40px; /* Agrega espacio a la izquierda del texto */
 }
 
-
-
-.alarm-container input {
+.scheduled-transactions-container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
-.alarm-checkmark {
+.scheduled-transactions-checkmark {
   position: absolute;
   top: 0;
   left: 0;
@@ -305,25 +303,25 @@ form div:nth-child(n + 3) {
   border-radius: 5px;
 }
 
-.alarm-container:hover input ~ .alarm-checkmark {
+.scheduled-transactions-container:hover input ~ .scheduled-transactions-checkmark {
   background-color: #ccc; /* Cambia el color de fondo del checkbox al pasar el mouse */
 }
 
-.alarm-container input:checked ~ .alarm-checkmark {
+.scheduled-transactions-container input:checked ~ .scheduled-transactions-checkmark {
   background-color: #2196F3; /* Cambia el color de fondo del checkbox cuando está seleccionado */
 }
 
-.alarm-checkmark:after {
+.scheduled-transactions-checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-.alarm-container input:checked ~ .alarm-checkmark:after {
+.scheduled-transactions-container input:checked ~ .scheduled-transactions-checkmark:after {
   display: block;
 }
 
-.alarm-container .alarm-checkmark:after {
+.scheduled-transactions-container .scheduled-transactions-checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
@@ -333,10 +331,9 @@ form div:nth-child(n + 3) {
   transform: rotate(45deg);
 }
 
-#treshold-amount{
+#scheduled-treshold-amount {
   width: 900px;
 }
-
 
 /* END POPUP */
 
@@ -671,4 +668,24 @@ ul li:hover .action {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5); /* Fondo opacado y oscurecido */
   z-index: 1000; /* Para asegurar que esté encima de todo */
+}
+
+#scheduledTransactionTable tr{
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.deleteScheduledTransactionButton{
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  width: 50px;
 }

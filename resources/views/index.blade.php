@@ -192,7 +192,7 @@
       document
         .getElementById("remove-prog-transaction-button")
         .addEventListener("click", function () {
-          document.getElementById("deleteProgramTransactionoverlay").style.display = "block";
+          document.getElementById("deleteScheduledTransactionOverlay").style.display = "block";
         });
 
       document

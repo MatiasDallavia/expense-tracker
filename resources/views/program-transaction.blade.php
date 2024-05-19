@@ -14,7 +14,7 @@
 
           <div class="switch-label program-transaction">INCOME</div>
           <div class="switch">
-              <input type="checkbox" id="switchScheduledTransactions" class="checkbox" name="transaction-amount">
+              <input type="checkbox" id="switchScheduledTransactions" class="checkbox" name="is-income">
               <label for="switchScheduledTransactions" class="slider"></label>
           </div>      
         </div>
