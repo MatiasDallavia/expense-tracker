@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alarms;
+use App\Models\ScheduledTransactions;
 use App\Models\transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -22,10 +23,13 @@ class TransactionController extends Controller
         $transactions = transaction::get_total();
         $last_transaction = transaction::last_transaction();
 
+        dump(ScheduledTransactions::get_scheduled_transaction(1));
+
         return view('index', [
             "transactions" => transaction::all(),
             "total" => transaction::get_total(),
             "last_transaction" => transaction::last_transaction(),
+            "scheduledTransactions" => ScheduledTransactions::get_scheduled_transaction(1),
             "alarms" => Alarms::where("user_id", 1)->get(),
         ]);
     }
@@ -66,15 +70,6 @@ class TransactionController extends Controller
         // $last_transaction = transaction::last_transaction();
         // dd($transactions);
         // dd($transactions);
-
-        return redirect("/");
-    }
-
-    public function destroy($id)
-    {
-
-        // $idea = Transaction::where("id", $id)->firstOrFail();
-        // $idea->delete();
 
         return redirect("/");
     }
