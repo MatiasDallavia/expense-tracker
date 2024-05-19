@@ -27,6 +27,8 @@ Route::post('/alarms', [AlarmController::class, "store"])->name("alarm.store");
 
 Route::post('/schedule', [ScheduledTransactionController::class, "store"])->name("schedule.store");
 
+Route::delete('/schedule/{id}', [ScheduledTransactionController::class, "destroy"])->name("schedule.destroy");
+
 // Route::get('/', function () {
 //     return view('index');
 // });

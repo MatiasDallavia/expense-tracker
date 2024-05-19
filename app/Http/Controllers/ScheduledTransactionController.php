@@ -14,10 +14,12 @@ class ScheduledTransactionController extends Controller
         // request()->validate([
         //     "transaction-amount" => "required"
         // ]);
-
         $hasDaily = request()->has("daily");
         $hasMonthly = request()->has("monthly");
         $hasScheduleFor = request()->has("schedule-for");
+        $isIncome = request()->has("is-income");
+
+        $amount = request()->amount;
 
         $inputFields = [
             $hasMonthly, $hasDaily, $hasScheduleFor
@@ -46,10 +48,17 @@ class ScheduledTransactionController extends Controller
 
         $ScheduledTransaction->daily = $hasDaily;
         $ScheduledTransaction->monthly = $hasMonthly;
-        $ScheduledTransaction->amount = request()->amount;
+        $ScheduledTransaction->amount = $isIncome ? $amount : -$amount;
 
         $ScheduledTransaction->save();
 
-        dd($ScheduledTransaction);
+        return redirect("/");
+    }
+
+    public function destroy($id)
+    {
+        $scheduledTransaction = ScheduledTransactions::where("id", $id)->firstOrFail();
+        $scheduledTransaction->delete();
+        return redirect("/");
     }
 }
