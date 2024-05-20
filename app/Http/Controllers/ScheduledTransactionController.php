@@ -49,7 +49,7 @@ class ScheduledTransactionController extends Controller
         $ScheduledTransaction->daily = $hasDaily;
         $ScheduledTransaction->monthly = $hasMonthly;
         $ScheduledTransaction->amount = $isIncome ? $amount : -$amount;
-
+        $ScheduledTransaction->category = request()->get("category");
         $ScheduledTransaction->save();
 
         return redirect("/");
