@@ -13,17 +13,6 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        // dd(Transaction::all());
-        // $transaction = new Transaction();
-        // $transaction->amount = 100;
-        // $transaction->category = "supermarket";
-        // $transaction->user_id = 1;
-        // $transaction->save();
-
-        $transactions = transaction::get_total();
-        $last_transaction = transaction::last_transaction();
-
-        dump(ScheduledTransactions::get_scheduled_transaction(1));
 
         return view('index', [
             "transactions" => transaction::all(),
@@ -37,13 +26,7 @@ class TransactionController extends Controller
     public function store()
     {
 
-        // dd(Transaction::all());
 
-        // $transaction = new Transaction();
-        // $transaction->amount = 100;
-        // $transaction->category = "supermarket";
-        // $transaction->user_id = 1;
-        // $transaction->save();
         request()->validate([
             "date" => "required|date",
             "name" => "required|min:1|max:25",
@@ -66,10 +49,6 @@ class TransactionController extends Controller
         $transaction->user_id = 1;
         $transaction->save();
 
-        // $transactions = transaction::get_total();
-        // $last_transaction = transaction::last_transaction();
-        // dd($transactions);
-        // dd($transactions);
 
         return redirect("/");
     }

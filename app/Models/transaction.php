@@ -16,9 +16,10 @@ class transaction extends Model
 
     protected $fillable = [
         'amount',
+        'category',
         'date',
         'created_at',
-        'user',
+        'user_id',
     ];
 
     public static function get_total()
