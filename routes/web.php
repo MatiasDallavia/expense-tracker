@@ -1,10 +1,12 @@
 <?php
 
+use App\Exports\TransactionsExports;
 use App\Http\Controllers\AlarmController;
 use App\Http\Controllers\ScheduledTransactionController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,9 @@ Route::post('/schedule', [ScheduledTransactionController::class, "store"])->name
 
 Route::delete('/schedule/{id}', [ScheduledTransactionController::class, "destroy"])->name("schedule.destroy");
 
+Route::get('/download-users-excel', function () {
+    return Excel::download(new TransactionsExports, 'transactions.xlsx');
+})->name('download.transactions.excel');
 // Route::get('/', function () {
 //     return view('index');
 // });
