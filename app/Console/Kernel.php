@@ -13,6 +13,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         $schedule->command('comando:ExecuteMonthlyTransactions')->monthly();
+        $schedule->command('comando:ExecuteDailyTransactions')->daily();
+        $schedule->command('comando:ExecuteScheduledTransactions')->daily();
     }
 
     /**
