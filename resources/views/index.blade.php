@@ -35,20 +35,20 @@
 
             {{-- @include("program-transaction") --}}
 
-          @include("popup.new-alarm")
+          {{-- @include("popup.new-alarm") --}}
 
-          @include("popup.delete-alarm")
+          {{-- @include("popup.delete-alarm") --}}
 
           <div class="iconContainer">
             <div class="dropdown">
               <img class="icon excel dropbtn" src="images/excel-svgrepo-com.svg" />
 
               <div class="dropdown-content">
-                <a id="download-excel-button" href="#">Download excel</a>
+                <a id="download-excel-button" href="{{ route('download.transactions.excel') }}">Download excel</a>
               </div>
             </div>
 
-            <div class="dropdown">
+            {{-- <div class="dropdown">
               <img class="icon dropbtn" src="images/clock-lines-svgrepo-com.svg" />
 
               <div class="dropdown-content">
@@ -56,7 +56,7 @@
                 <a id="remove-alarm-button" href="#">Remove Alarm</a>
               </div>
 
-            </div>
+            </div> --}}
 
             <div class="dropdown">
               <img class="icon calendar dropbtn" src="images/calendar.svg" />
@@ -169,21 +169,22 @@
           document.getElementById("overlay").style.display = "block";
         });
 
-      document
-        .getElementById("create-alarm-button")
-        .addEventListener("click", function () {
-          document.getElementById("overlay").style.display = "block";
-        });
+      // document
+      //   .getElementById("create-alarm-button")
+      //   .addEventListener("click", function () {
+      //     document.getElementById("overlay").style.display = "block";
+      //   });
 
-      document
-        .getElementById("remove-alarm-button")
-        .addEventListener("click", function () {
-          document.getElementById("deleteAlarmoverlay").style.display = "block";
-        });
+      // document
+      //   .getElementById("remove-alarm-button")
+      //   .addEventListener("click", function () {
+      //     document.getElementById("deleteAlarmoverlay").style.display = "block";
+      //   });
 
-
+        console.log(        document
+        .querySelector("#create-prog-transaction-button"));
         document
-        .getElementById("create-prog-transaction-button")
+        .querySelector("#create-prog-transaction-button")
         .addEventListener("click", function () {
           console.log("PULSANDO");
           document.querySelector(".newProgrammedTransaction").style.display = "block";
@@ -196,12 +197,25 @@
           console.log(document.querySelector(".newProgrammedTransaction").style.display);
         });
 
+        document
+        .querySelector(".closePopup.ProgramTransaction")
+        .addEventListener("click", function () {
+          document.getElementById("deleteScheduledTransactionOverlay").style.display = "none";
+        });
+
+        document
+        .querySelector(".closePopup.newProgrammedTransaction")
+        .addEventListener("click", function () {
+          document.querySelector(".overlay.newProgrammedTransaction").style.display = "none";
+        });        
+
+
       document
         .getElementById("closePopup")
         .addEventListener("click", function () {
           document.getElementById("overlay").style.display = "none";
         });
-
+        
 
       document
         .querySelector(".closePopup.closeDeleteAlarm")
