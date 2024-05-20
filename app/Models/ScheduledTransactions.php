@@ -14,6 +14,7 @@ class ScheduledTransactions extends Model
         "user_id",
         "transaction_id",
         "daily",
+        "category",
         "monthly",
         "scheduled_for",
         "created_at",

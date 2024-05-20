@@ -14,14 +14,14 @@ class TransactionsExports implements FromCollection, WithHeadings
      */
     public function collection()
     {
-        return transaction::select("amount", "description", "date")->get();
+        return transaction::select("amount", "category", "date")->get();
     }
 
     public function headings(): array
     {
         return [
             'Amount',
-            'Description',
+            'Category',
             'Date',
         ];
     }

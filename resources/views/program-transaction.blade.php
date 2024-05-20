@@ -10,6 +10,11 @@
           <input type="date" id="datePikcer" name="schedule-for" min="2022-01-01" max="2024-12-31">
         </div>
 
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" name="category" required>
+        </div>
+
         <div class="form-group flex-container">
 
           <div class="switch-label program-transaction">INCOME</div>
