@@ -238,6 +238,14 @@
 
 
     </script>
+
+    <script>
+      document.getElementById('deleteTransactionButton').addEventListener('click', function(event) {
+          event.preventDefault();
+          document.getElementById('deleteTransactionForm').submit();
+      });
+    </script>
+
     <script>
       $(document).ready(function () {
         $("#datepicker")

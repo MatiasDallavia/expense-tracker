@@ -23,7 +23,7 @@ Route::get('/', [TransactionController::class, "index"]);
 
 Route::post('/transactions', [TransactionController::class, "store"])->name("transactions.store");
 
-Route::delete('/transactions/{id}', [TransactionController::class, "destroy"])->name("transaction.destroy");
+Route::delete('/transactions/{id}', [TransactionController::class, "destroy"])->name("transactions.destroy");
 
 Route::post('/alarms', [AlarmController::class, "store"])->name("alarm.store");
 
@@ -34,6 +34,3 @@ Route::delete('/schedule/{id}', [ScheduledTransactionController::class, "destroy
 Route::get('/download-users-excel', function () {
     return Excel::download(new TransactionsExports, 'transactions.xlsx');
 })->name('download.transactions.excel');
-// Route::get('/', function () {
-//     return view('index');
-// });

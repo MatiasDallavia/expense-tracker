@@ -15,7 +15,7 @@ class TransactionController extends Controller
     {
 
         return view('index', [
-            "transactions" => transaction::all(),
+            "transactions" => transaction::all()->reverse(),
             "total" => transaction::get_total(),
             "last_transaction" => transaction::last_transaction(),
             "scheduledTransactions" => ScheduledTransactions::get_scheduled_transaction(1),
@@ -50,6 +50,13 @@ class TransactionController extends Controller
         $transaction->save();
 
 
+        return redirect("/");
+    }
+
+    public function destroy($id)
+    {
+        $transaction = transaction::where("id", $id)->firstOrFail();
+        $transaction->delete();
         return redirect("/");
     }
 }
