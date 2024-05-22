@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User;
 use App\Models\Alarms;
 
 
-class transaction extends Model
+class Transactions extends Model
 {
     use HasFactory;
 
@@ -52,9 +52,8 @@ class transaction extends Model
 
         foreach ($alarms as $alarm) {
             # code...
-            $total = transaction::get_total(1);
+            $total = self::get_total(1);
             $final_total = $total + $transaction_amount;
-            dump($alarm->trigger_when_suprass);
 
             if (
                 $final_total > $alarm->treshold

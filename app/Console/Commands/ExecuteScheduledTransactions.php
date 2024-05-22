@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\ScheduledTransactions;
-use App\Models\transaction;
+use App\Models\Transactions;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Carbon;
@@ -42,7 +42,7 @@ class ExecuteScheduledTransactions extends Command
 
                 if (Carbon::parse($scheduledTransaction->scheduled_for) == today()) {
 
-                    $transaction = transaction::create([
+                    $transaction = Transactions::create([
                         "amount" => $scheduledTransaction->amount,
                         "date" => today(),
                         "category" => $scheduledTransaction->category,

@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\ScheduledTransactions;
-use App\Models\transaction;
+use App\Models\Transactions;
 use App\Models\User;
 use Illuminate\Console\Command;
 
@@ -39,7 +39,7 @@ class ExecuteDailyTransactions extends Command
 
             foreach ($scheduledTransactions as $scheduledTransaction) {
 
-                $transaction = transaction::create([
+                $transaction = Transactions::create([
                     "amount" => $scheduledTransaction->amount,
                     "date" => today(),
                     "category" => $scheduledTransaction->category,

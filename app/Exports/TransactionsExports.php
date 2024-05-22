@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\transaction;
+use App\Models\Transaction;
 use App\Models\Transactions;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -21,7 +21,7 @@ class TransactionsExports implements FromCollection, WithHeadings
      */
     public function collection()
     {
-        return transaction::select("amount", "category", "date")->where("user_id", $this->userId)->get();
+        return Transactions::select("amount", "category", "date")->where("user_id", $this->userId)->get();
     }
 
     public function headings(): array

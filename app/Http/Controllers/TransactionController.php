@@ -4,20 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Alarms;
 use App\Models\ScheduledTransactions;
-use App\Models\transaction;
+use App\Models\Transactions;
 use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
     public function index()
     {
-        $user_id = Auth::user()->id;
+        $user_id = Auth::id();
+
+        $transactions = $user_id ? Transactions::where("user_id", $user_id)->get()->reverse() : [];
+        $total = $user_id ? Transactions::get_total($user_id) : 0;
+        $lastTransaction = $user_id ? Transactions::last_transaction($user_id) : 0;
+        $scheduledTransactions = $user_id ? ScheduledTransactions::get_scheduled_transaction($user_id) : [];
 
         return view('index', [
-            "transactions" => transaction::where("user_id", $user_id)->get()->reverse(),
-            "total" => transaction::get_total($user_id),
-            "last_transaction" => transaction::last_transaction($user_id),
-            "scheduledTransactions" => ScheduledTransactions::get_scheduled_transaction($user_id),
+            "transactions" => $transactions,
+            "total" => $total,
+            "last_transaction" => $lastTransaction,
+            "scheduledTransactions" => $scheduledTransactions,
             // "alarms" => Alarms::where("user_id", $user_id)->get(),
         ]);
     }
@@ -40,7 +45,7 @@ class TransactionController extends Controller
             $amount = -$amount;
         }
 
-        $transaction = new Transaction();
+        $transaction = new Transactions();
         $transaction->amount = $amount;
         $transaction->category = request()->get("category", now());
         $transaction->date = request()->get("date", now());
@@ -53,7 +58,7 @@ class TransactionController extends Controller
 
     public function destroy($id)
     {
-        $transaction = transaction::where("id", $id)->where("user_id", Auth::user()->id)->firstOrFail();
+        $transaction = Transactions::where("id", $id)->where("user_id", Auth::user()->id)->firstOrFail();
         $transaction->delete();
         return redirect("/");
     }
