@@ -2,6 +2,7 @@
 
 use App\Exports\TransactionsExports;
 use App\Http\Controllers\AlarmController;
+use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\ScheduledTransactionController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
@@ -35,6 +36,4 @@ Route::post('users/register', [UserController::class, "store"])->name("users.sto
 
 Route::post('users/authenticate', [UserController::class, "authenticate"])->name("users.auth");
 
-Route::get('/download-users-excel', function () {
-    return Excel::download(new TransactionsExports, 'transactions.xlsx');
-})->name('download.transactions.excel');
+Route::get('/download-users-excel',[ ExcelController::class, "show"])->name('download.transactions.excel');
