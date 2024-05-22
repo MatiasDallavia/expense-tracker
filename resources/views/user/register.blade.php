@@ -33,6 +33,5 @@
 
             <button type="submit">Submit</button>
         </form>
-        <button id="closePopup">Cerrar</button>
     </div>
 </div>
