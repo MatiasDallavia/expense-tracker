@@ -17,73 +17,80 @@
   <body>
     <main>
 
+      @guest
+        @include('user.login')
+        @include('user.register')
+      @endguest
+
+      @auth    
         @include("balance-header")
+      
+        <section>
+          <div class="container">
 
-      <section>
-        <div class="container">
+              @include('add-transaction')
 
-            @include('add-transaction')
+              @include("popup.delete-programed-transaction")
 
-            @include("popup.delete-programed-transaction")
+              @include("program-transaction")
 
-            @include("program-transaction")
-
-            {{-- @include('user.login') --}}
-
-            {{-- @include('user.register') --}}
+              {{-- @include('user.login') --}}
 
 
-            {{-- @include("program-transaction") --}}
 
-          {{-- @include("popup.new-alarm") --}}
+              {{-- @include("program-transaction") --}}
 
-          {{-- @include("popup.delete-alarm") --}}
+            {{-- @include("popup.new-alarm") --}}
 
-          <div class="iconContainer">
-            <div class="dropdown">
-              <img class="icon excel dropbtn" src="images/excel-svgrepo-com.svg" />
+            {{-- @include("popup.delete-alarm") --}}
 
-              <div class="dropdown-content">
-                <a id="download-excel-button" href="{{ route('download.transactions.excel') }}">Download excel</a>
-              </div>
-            </div>
+            <div class="iconContainer">
+              <div class="dropdown">
+                <img class="icon excel dropbtn" src="images/excel-svgrepo-com.svg" />
 
-            {{-- <div class="dropdown">
-              <img class="icon dropbtn" src="images/clock-lines-svgrepo-com.svg" />
-
-              <div class="dropdown-content">
-                <a id="create-alarm-button" href="#">Create Alarm</a>
-                <a id="remove-alarm-button" href="#">Remove Alarm</a>
+                <div class="dropdown-content">
+                  <a id="download-excel-button" href="{{ route('download.transactions.excel') }}">Download excel</a>
+                </div>
               </div>
 
-            </div> --}}
+              {{-- <div class="dropdown">
+                <img class="icon dropbtn" src="images/clock-lines-svgrepo-com.svg" />
 
-            <div class="dropdown">
-              <img class="icon calendar dropbtn" src="images/calendar.svg" />
+                <div class="dropdown-content">
+                  <a id="create-alarm-button" href="#">Create Alarm</a>
+                  <a id="remove-alarm-button" href="#">Remove Alarm</a>
+                </div>
 
-              <div class="dropdown-content">
-                <a id="create-prog-transaction-button" href="#">Program Transaction</a>
-                <a id="remove-prog-transaction-button" href="#">Remove Transaction</a>
-              </div>    
+              </div> --}}
+
+              <div class="dropdown">
+                <img class="icon calendar dropbtn" src="images/calendar.svg" />
+
+                <div class="dropdown-content">
+                  <a id="create-prog-transaction-button" href="#">Program Transaction</a>
+                  <a id="remove-prog-transaction-button" href="#">Remove Transaction</a>
+                </div>    
+              </div>
+
             </div>
-
           </div>
-        </div>
 
-      </section>
+        </section>
 
-      <section>
-        <h3 id="transactionTitle">Transactions</h3>
-        <hr />
-        <ul id="transactionList">
+        <section>
+          <h3 id="transactionTitle">Transactions</h3>
+          <hr />
+          <ul id="transactionList">
 
-            @foreach ($transactions as $transaction)
-              @include("transaction")
-            @endforeach          
-            
-        </ul>
-      </section>
-    </main>
+              @foreach ($transactions as $transaction)
+                @include("transaction")
+              @endforeach          
+              
+          </ul>
+        </section>
+        @endauth
+
+      </main>
 
     <!-- <script src="script.js"></script> -->
     <script>
@@ -146,6 +153,7 @@
     </script>  
 
   <script>
+
     const transactions = document.querySelectorAll(".transactionCard").forEach(transaction => {
       const id = transaction.getAttribute("id");
       const deleteButton = transaction.querySelector(".deleteTransactionButton").addEventListener("click", async () => {
@@ -163,6 +171,20 @@
   
 
     <script>
+
+      document.querySelector("#NotRegistredYet").addEventListener("click", function(event) {
+        event.preventDefault();
+        document.querySelector(".loginOverlay").style.display = "none";
+        document.querySelector(".registerOverlay").style.display = "block";
+      })
+
+
+      document.querySelector("#AlreadyRegistred").addEventListener("click", function(event) {
+        event.preventDefault();
+        document.querySelector(".registerOverlay").style.display = "none";
+        document.querySelector(".loginOverlay").style.display = "block";
+      })      
+
       document
         .getElementById("download-excel-button")
         .addEventListener("click", function () {

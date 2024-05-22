@@ -2,8 +2,17 @@
     <div class="popup" id="popup">
         <h2>Login</h2>
 
-        <form id="loginForm">
-
+        <form method="POST" action="{{ route('users.auth') }}" id="loginForm">
+            @csrf
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             <br>
             <div class="alarm-options">
 
@@ -11,12 +20,15 @@
                 <input type="text" name="email" required />
 
                 <label for="name">Password</label>
-                <input type="text" name="Password" required />
+                <input type="text" name="password" required />
+
+                <br>
+
+                <a id="NotRegistredYet" href="">Not registred yet?</a>
+
 
             </div>
 
-            <a href="">Not registred yet?</a>
-            <br>
 
 
             <button type="submit">Submit</button>
