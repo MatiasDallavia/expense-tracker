@@ -11,7 +11,7 @@
                     <tr>
                         <td colspan="2">
                             <div class="scheduled-transactions-name">
-                                {{ $scheduledTransaction->amount }}
+                                ${{ $scheduledTransaction->amount }}
                             </div>
                             <div class="scheduled-transactions-description">
                                 {{ $scheduledTransaction->get_schedule_info() }}

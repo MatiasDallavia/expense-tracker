@@ -25,7 +25,7 @@ class ScheduledTransactionController extends Controller
         $countTrue = count(array_filter($inputFields));
 
         if ($countTrue >= 2) {
-            dump("ERROR");
+            return redirect()->back()->withErrors("Wrong scheduled time");
         }
 
         $ScheduledTransaction = new ScheduledTransactions();
@@ -36,10 +36,8 @@ class ScheduledTransactionController extends Controller
             $actual_date = today();
 
             if (Carbon::parse(request()->get("schedule-for")) <= $actual_date) {
-                dump("LA FECHA DEBE SER ANTES");
-            } else {
-                dump("LA FECHA Esta BIEN");
-            }
+                return redirect()->back()->withErrors("The date must be before today");
+            } 
 
             $ScheduledTransaction->scheduled_for = $date;
         }
