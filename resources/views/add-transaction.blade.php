@@ -7,17 +7,17 @@
       @csrf
         <div class="switch-container">
             
-            <div class="switch-label add-transaction">EXPENSES</div>
+            <div class="switch-label add-transaction">EXPENSE</div>
             <div class="switch add-transaction">
-                <input type="checkbox" id="switchTransactions" class="checkbox" name="transaction-amount">
+                <input type="checkbox" id="switchTransactions" class="checkbox" name="isIncome">
                 <label for="switchTransactions" class="slider"></label>
             </div>   
 
         </div>
 
         <div>
-            <label for="name">Name</label>
-            <input type="text" name="name" required>
+            <label for="category">Category</label>
+            <input type="text" name="category" required>
         </div>
         <div>
             <label for="amount">Amount</label>

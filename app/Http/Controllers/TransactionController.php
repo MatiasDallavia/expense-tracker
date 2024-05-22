@@ -5,21 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Alarms;
 use App\Models\ScheduledTransactions;
 use App\Models\transaction;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
     public function index()
     {
+        $user_id = Auth::user()->id;
 
         return view('index', [
-            "transactions" => transaction::all()->reverse(),
-            "total" => transaction::get_total(),
-            "last_transaction" => transaction::last_transaction(),
-            "scheduledTransactions" => ScheduledTransactions::get_scheduled_transaction(1),
-            "alarms" => Alarms::where("user_id", 1)->get(),
+            "transactions" => transaction::where("user_id", $user_id)->get()->reverse(),
+            "total" => transaction::get_total($user_id),
+            "last_transaction" => transaction::last_transaction($user_id),
+            "scheduledTransactions" => ScheduledTransactions::get_scheduled_transaction($user_id),
+            // "alarms" => Alarms::where("user_id", $user_id)->get(),
         ]);
     }
 
@@ -29,24 +28,23 @@ class TransactionController extends Controller
 
         request()->validate([
             "date" => "required|date",
-            "name" => "required|min:1|max:25",
+            "category" => "required|min:1|max:25",
             "amount" => "required|numeric|min:1",
         ]);
+
         $isIncome = request()->has("isIncome");
 
         $amount = request()->get("amount", 0);
-
 
         if (!$isIncome) {
             $amount = -$amount;
         }
 
-        transaction::check_alarms($amount, 1);
-
         $transaction = new Transaction();
         $transaction->amount = $amount;
-        $transaction->category = request()->get("date", now());
-        $transaction->user_id = 1;
+        $transaction->category = request()->get("category", now());
+        $transaction->date = request()->get("date", now());
+        $transaction->user_id = Auth::user()->id;
         $transaction->save();
 
 
@@ -55,7 +53,7 @@ class TransactionController extends Controller
 
     public function destroy($id)
     {
-        $transaction = transaction::where("id", $id)->firstOrFail();
+        $transaction = transaction::where("id", $id)->where("user_id", Auth::user()->id)->firstOrFail();
         $transaction->delete();
         return redirect("/");
     }

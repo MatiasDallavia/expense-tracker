@@ -5,15 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\ScheduledTransactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class ScheduledTransactionController extends Controller
 {
     public function store()
     {
 
-        // request()->validate([
-        //     "transaction-amount" => "required"
-        // ]);
         $hasDaily = request()->has("daily");
         $hasMonthly = request()->has("monthly");
         $hasScheduleFor = request()->has("schedule-for");
@@ -31,7 +29,7 @@ class ScheduledTransactionController extends Controller
         }
 
         $ScheduledTransaction = new ScheduledTransactions();
-        $ScheduledTransaction->user_id = 1;
+        $ScheduledTransaction->user_id = Auth::user()->id;
 
         if ($hasScheduleFor) {
             $date = request()->get("schedule-for");
@@ -57,7 +55,9 @@ class ScheduledTransactionController extends Controller
 
     public function destroy($id)
     {
-        $scheduledTransaction = ScheduledTransactions::where("id", $id)->firstOrFail();
+        $scheduledTransaction = ScheduledTransactions::where("id", $id)->
+            where("user",Auth::user()->id)->
+            firstOrFail();
         $scheduledTransaction->delete();
         return redirect("/");
     }

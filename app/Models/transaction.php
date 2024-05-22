@@ -22,9 +22,9 @@ class transaction extends Model
         'user_id',
     ];
 
-    public static function get_total()
+    public static function get_total($user_id)
     {
-        $transactions = self::all();
+        $transactions = self::where("user_id", $user_id)->get();
         $total = 0;
 
         foreach ($transactions as &$transaction) {
@@ -34,43 +34,40 @@ class transaction extends Model
         return $total;
     }
 
-    public static function last_transaction()
+    public static function last_transaction($user_id)
     {
-        $last_transaction = self::latest()->get()->first();
+        $last_transaction = self::where("user_id", $user_id)->latest()->get()->first();
 
-        return $last_transaction->amount;
+        if ($last_transaction != null){
+            return $last_transaction->amount;
+        }
+        return 0;
     }
 
+    // DEPRECATED
     public static function check_alarms($transaction_amount, $user_id)
     {
-        // $user = User::where("id", $user_id)->firstOrFail();
-
-        // if (!$user){
-        //     dd("ERROR");
-        // }
 
         $alarms = Alarms::where("user_id", $user_id)->get();
 
         foreach ($alarms as $alarm) {
             # code...
-            $total = transaction::get_total();
+            $total = transaction::get_total(1);
             $final_total = $total + $transaction_amount;
             dump($alarm->trigger_when_suprass);
 
-            if(
-                $final_total > $alarm->treshold 
+            if (
+                $final_total > $alarm->treshold
                 && $alarm->trigger_when_suprass
-                && $total < $final_total)
-                {
-                    dd("ERROR");
-            }
-
-            else if(
-                $final_total < $alarm->treshold 
+                && $total < $final_total
+            ) {
+                dd("ERROR");
+            } else if (
+                $final_total < $alarm->treshold
                 && !$alarm->trigger_when_suprass
                 && $total > $final_total
-                ){
-                    dd("ERROR");
+            ) {
+                dd("ERROR");
             }
         }
 
@@ -79,4 +76,6 @@ class transaction extends Model
 
         return $last_transaction->amount;
     }
+    // DEPRECATED
+
 }
